@@ -1,12 +1,14 @@
 package com.oracle.msa.sample.clientrating.blacklistservice;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
-@Stateless
+@Component
 public class BlacklistBean {
     @PersistenceContext
     private EntityManager entityManager;

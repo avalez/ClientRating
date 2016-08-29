@@ -8,7 +8,6 @@ public class Customer {
     public static enum Status {BLACKLISTED, WHITELISTED}
 
     @Id
-    @GeneratedValue
     private Integer id;
 
     @Enumerated(EnumType.STRING)
@@ -20,5 +19,14 @@ public class Customer {
 
     public Status getStatus() {
         return status;
+    }
+
+    public Customer(Integer id, Status status) {
+		this.id = id;
+		this.status = status;
+    }
+
+    Customer() { // jpa only
+    	
     }
 }

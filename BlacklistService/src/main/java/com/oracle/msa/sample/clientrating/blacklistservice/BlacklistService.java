@@ -1,21 +1,19 @@
 package com.oracle.msa.sample.clientrating.blacklistservice;
 
-import javax.ejb.EJB;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Path("/blacklist")
+@RestController
+@RequestMapping("/blacklist")
 public class BlacklistService {
-    @EJB
+	@Autowired
     private BlacklistBean blacklistBean;
 
-    @GET
-    @Path("{customerId}/")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getCustomerStatus(@PathParam("customerId") Integer customerId) {
+    @RequestMapping(value = "/{customerId}", method = RequestMethod.GET)
+    public String getCustomerStatus(@PathVariable("customerId") Integer customerId) {
         return blacklistBean.getCustomerStatus(customerId).name();
     }
 }

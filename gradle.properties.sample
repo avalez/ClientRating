@@ -1,0 +1,10 @@
+org.gradle.daemon=true
+org.gradle.configureondemand=true
+org.gradle.parallel=false
+#systemProp.http.proxyHost=
+#systemProp.http.proxyPort=80
+#systemProp.http.nonProxyHosts=*.example.org|localhost
+#systemProp.https.proxyHost=
+#systemProp.https.proxyPort=80
+#systemProp.https.nonProxyHosts=*.example.org|localhost
+

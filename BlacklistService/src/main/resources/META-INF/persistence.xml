@@ -5,6 +5,7 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <!-- JPA 2.1/JEE7 -->
             <property name="javax.persistence.sql-load-script-source" value="META-INF/init_data.sql"/>
         </properties>
     </persistence-unit>
