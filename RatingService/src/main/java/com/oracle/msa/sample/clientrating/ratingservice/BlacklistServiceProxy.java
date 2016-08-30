@@ -1,27 +1,17 @@
 package com.oracle.msa.sample.clientrating.ratingservice;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.ejb.Stateless;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
-@Stateless
+@Component
 public class BlacklistServiceProxy {
-    private WebTarget target;
-
-    @Resource(name = "blacklistServiceURL")
+    @Value("${blacklistServiceURL}")
     private String blacklistServiceURL;
 
-    @PostConstruct
-    private void init() {
-        Client client = ClientBuilder.newClient();
-        target = client.target(blacklistServiceURL);
-    }
+	private RestTemplate rest = new RestTemplate();
 
     public CustomerStatus getCustomerStatus(Integer customerId) {
-        return CustomerStatus.valueOf(target.resolveTemplate("customerId", customerId).request(MediaType.APPLICATION_JSON_TYPE).get(String.class));
+        return CustomerStatus.valueOf(rest.getForEntity(blacklistServiceURL, String.class, customerId).getBody());
     }
 }

@@ -1,0 +1,5 @@
+blacklistServiceURL: ${vcap.services.blacklist-service.credentials.uri:http://127.0.0.1:8081}/blacklist/{customerId}
+recordsServiceURL: ${vcap.services.records-service.credentials.uri:http://127.0.0.1:8082}/records/{customerId}
+server:
+    port: ${port:8080}
+
