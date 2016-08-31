@@ -1,7 +1,11 @@
 blacklistServiceURL: ${vcap.services.blacklist-service.credentials.uri:http://127.0.0.1:8081}/blacklist/{customerId}
+recordsServiceBaseURL: ${vcap.services.records-service.credentials.uri:http://127.0.0.1:8082}
 records:
     ribbon:
-        listOfServers: ${vcap.services.records-service.credentials.uri:http://127.0.0.1:8081}/records/{customerId}
+        listOfServers: ${vcap.services.records-service.credentials.uri:http://127.0.0.1:8082}
+ribbon:
+    eureka:
+        enabled: false
 server:
     port: ${port:8080}
 

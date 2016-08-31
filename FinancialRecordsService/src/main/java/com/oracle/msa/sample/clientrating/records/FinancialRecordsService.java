@@ -1,21 +1,20 @@
 package com.oracle.msa.sample.clientrating.records;
 
-import javax.ejb.EJB;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
-@Path("/records")
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/records")
 public class FinancialRecordsService {
-    @EJB
-    private FinancialRecordsProxy financialRecords;
+//    @Autowired
+//    private FinancialRecordsProxy financialRecords;
 
-    @GET
-    @Path("{customerId}/")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getHistoryRating(@PathParam("customerId") Integer customerId) {
-        return financialRecords.getHistoryRating(customerId).name();
+    @RequestMapping(value = "/{customerId}", method = RequestMethod.GET)
+    public String getHistoryRating(@PathVariable("customerId") Integer customerId) {
+        //return financialRecords.getHistoryRating(customerId).name();
+        return FinancialHistoryRating.values()[(int)Math.floor(Math.random() * FinancialHistoryRating.values().length)].name();
     }
 }

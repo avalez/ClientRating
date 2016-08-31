@@ -1,1 +1,1 @@
-include 'BlacklistService', 'RatingService'
+include 'BlacklistService', 'FinancialRecordsService', 'RatingService'

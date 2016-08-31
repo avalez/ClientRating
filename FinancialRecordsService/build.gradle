@@ -1,0 +1,23 @@
+apply from: "$rootDir/common.gradle"
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+//apply plugin: org.springframework.boot.gradle.plugin.SpringBootPlugin
+apply plugin: 'spring-boot'
+
+dependencies {
+}
+
+jar {
+    baseName = "records-service"
+}
