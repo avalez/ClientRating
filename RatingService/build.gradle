@@ -16,8 +16,8 @@ buildscript {
 apply plugin: 'spring-boot'
 
 dependencies {
+    compile "org.springframework.cloud:spring-cloud-starter-feign:${springCloudVersion}"
 }
-
 
 jar {
     baseName = "rating-service"

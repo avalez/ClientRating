@@ -9,7 +9,7 @@ public class BlacklistServiceProxy {
     @Value("${blacklistServiceURL}")
     private String blacklistServiceURL;
 
-	private RestTemplate rest = new RestTemplate();
+    private RestTemplate rest = new RestTemplate();
 
     public CustomerStatus getCustomerStatus(Integer customerId) {
         return CustomerStatus.valueOf(rest.getForEntity(blacklistServiceURL, String.class, customerId).getBody());

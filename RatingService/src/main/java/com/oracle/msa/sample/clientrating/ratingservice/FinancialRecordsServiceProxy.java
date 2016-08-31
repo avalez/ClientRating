@@ -1,17 +1,14 @@
 package com.oracle.msa.sample.clientrating.ratingservice;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 @Component
 public class FinancialRecordsServiceProxy {
-    @Value("${recordsServiceURL}")
-    private String recordsServiceURL;
-
-	private RestTemplate rest = new RestTemplate();
+    @Autowired
+    FinancialRecordsServiceClient financialRecordsService;
 
     public FinancialHistoryRating getHistoryRating(Integer customerId) {
-        return FinancialHistoryRating.A_PLUS; //valueOf(rest.getForEntity(recordsServiceURL, String.class, customerId).getBody());
+        return FinancialHistoryRating.valueOf(financialRecordsService.getRating(customerId));
     }
 }
