@@ -11,3 +11,15 @@ Configuration of the REST endpoints for each service TBD.
 
 ## Requirements
 TBD
+
+## Usage
+* gradle -a bootRun
+
+* gradle bootRepackage
+* cf push blacklist-service -p BlacklistService/build/libs/blacklist-service.jar
+* cf create-user-provided-service blacklist-service -r https://blacklist-service.cfapps.io/
+* cf update-user-provided-service -p '{"uri": "http://blacklist-service.cfapps.io/"}' blacklist-service
+* cf push rating-service -p RatingService/build/libs/rating-service.jar
+
+* http://blacklist-service.cfapps.io/blacklist/1
+* http://rating-service.cfapps.io/rating/1
